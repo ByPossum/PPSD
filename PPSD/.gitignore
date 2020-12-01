@@ -9,8 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/[Aa]ssets/Poses2D/**.png
-/[Aa]ssets/Poses2D/**.png.meta
+/[Aa]ssets/Poses2D/**
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
