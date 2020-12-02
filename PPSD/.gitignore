@@ -12,6 +12,7 @@
 /[Aa]ssets/Poses2D/**
 /[Aa]ssets/Poses2D/*.meta
 /[Aa]ssets/Poses2D/*.png
+/[Aa]ssets/Poses2D/*.png.meta
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
