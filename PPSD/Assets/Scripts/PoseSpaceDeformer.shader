@@ -12,13 +12,15 @@
         Pass
         {
             CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
+#pragma exclude_renderers d3d11 gles
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
-
+            float3[] _transformData;
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -34,6 +36,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            uniform float4[] _veticies;
 
             v2f vert (appdata v)
             {

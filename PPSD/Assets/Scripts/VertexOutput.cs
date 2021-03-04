@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VertexOutput : MonoBehaviour
+public unsafe class VertexOutput : MonoBehaviour
 {
     [SerializeField] private bool vertTest;
     [SerializeField] private Vector3 v_minRange;
@@ -13,6 +13,7 @@ public class VertexOutput : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer smr;
     [SerializeField] Material restMat;
     [SerializeField] Material animat;
+    [SerializeField] Material mat_rbf;
     [SerializeField] private GameObject go_joints;
     [SerializeField] private AnimationData[] ad_viewableData;
     private int disRow;
@@ -28,6 +29,7 @@ public class VertexOutput : MonoBehaviour
         smr.BakeMesh(posedMesh);
         Vector3[] _currentPose = posedMesh.vertices;
         ad_viewableData = CreateAnimData(restPose.Length, _currentPose);
+
     }
 
     public void GenerateColourArray()
@@ -61,7 +63,11 @@ public class VertexOutput : MonoBehaviour
         Debug.Log("Displacements Mapped");
     }
 
-
+    public void SendFloatData()
+    {
+        foreach(AnimationData ad in ad_viewableData)
+            mat_rbf.SetFloatArray("_transformData", new float[] { ad.f_vTransform[0], ad.f_vTransform[1], ad.f_vTransform[2] } );
+    }
 
     private Color[,] PaintDeformations(int _i_poseWidth, int _i_poseHeight, Vector3[] _A_currentPose, Texture2D[] _tex_outputTexture)
     {
